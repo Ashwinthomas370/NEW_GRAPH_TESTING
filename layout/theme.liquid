@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html class="no-js" lang="{{ shop.locale }}">
+<head>
+  <script src="https://www.googleoptimize.com/optimize.js?id=OPT-PRLT66J"></script>
+
+  <!-- Symmetry 4.11.7 -->
+
+  <link rel="preload" href="{{ 'styles.css' | asset_url }}" as="style">
+  {% render 'head-tag' %}
+  <meta name="theme-color" content="{{ settings.btn_col }}">
+
+  <title>
+    {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+  </title>
+
+  {% render 'social-meta-tags' %}
+
+  {{ 'styles.css' | asset_url | stylesheet_tag }}
+
+  <script>
+    window.theme = window.theme || {};
+    theme.money_format = {{ shop.money_format | json }};
+    theme.strings = {
+      previous: {{ 'general.accessibility_labels.previous' | t | json }},
+      next: {{ 'general.accessibility_labels.next' | t | json }},
+      addressError: {{ 'map.errors.address_error' | t | json }},
+      addressNoResults: {{ 'map.errors.address_no_results' | t | json }},
+      addressQueryLimit: {{ 'map.errors.address_query_limit_html' | t | json }},
+      authError: {{ 'map.errors.auth_error' | t | json }},
+      icon_labels_left: {{ 'general.icon_labels.left' | t | escape | json }},
+      icon_labels_right: {{ 'general.icon_labels.right' | t | escape | json }},
+      icon_labels_down: {{ 'general.icon_labels.down' | t | escape | json }},
+      icon_labels_close: {{ 'general.icon_labels.close' | t | escape | json }},
+      cart_terms_confirmation: {{ 'cart.terms.confirmation' | t | json }},
+      products_listing_from: {{ 'products.listing.from' | t | json }},
+      layout_live_search_see_all: {{ 'layout.live_search.see_all' | t | json }},
+      products_product_add_to_cart: {{ 'products.product.add_to_cart' | t | json }},
+      products_variant_no_stock: {{ 'products.variant.no_stock' | t | json }},
+      products_variant_non_existent: {{ 'products.variant.non_existent' | t | json }},
+      onlyXLeft: {{ 'products.labels.only_x_left' | t: quantity: '[[ quantity ]]' | json }},
+      products_product_unit_price_separator: {{ 'products.product.unit_price_separator' | t | json }},
+      general_navigation_menu_toggle_aria_label: {{ 'general.navigation.menu_toggle_aria_label' | t | json }},
+      products_added_notification_title: {{ 'products.added_notification.title' | t | json }},
+      products_added_notification_item: {{ 'products.added_notification.item' | t | json }},
+      products_added_notification_unit_price: {{ 'products.added_notification.unit_price' | t | json }},
+      products_added_notification_quantity: {{ 'products.added_notification.quantity' | t | json }},
+      products_added_notification_total_price: {{ 'products.added_notification.total_price' | t | json }},
+      products_added_notification_shipping_note: {{ 'products.added_notification.shipping_note' | t | json }},
+      products_added_notification_keep_shopping: {{ 'products.added_notification.keep_shopping' | t | json }},
+      products_added_notification_cart: {{ 'products.added_notification.cart' | t | json }},
+      products_product_adding_to_cart: {{ 'products.product.adding_to_cart' | t | json }},
+      products_product_added_to_cart: {{ 'products.product.added_to_cart' | t | json }},
+      products_added_notification_subtotal: {{ 'products.added_notification.subtotal' | t | json }},
+      products_labels_sold_out: {{ 'products.labels.sold_out' | t | json }},
+      products_labels_sale: {{ 'products.labels.sale' | t | json }},
+      general_quick_search_pages: {{ 'general.quick_search.pages' | t | json }},
+      general_quick_search_no_results: {{ 'general.quick_search.no_results' | t | json }}
+    };
+    theme.routes = {
+      search_url: '{{ routes.search_url }}',
+      cart_url: '{{ routes.cart_url }}',
+      cart_add_url: '{{ routes.cart_add_url }}',
+      cart_change_url: '{{ routes.cart_change_url }}'
+    };
+    theme.settings = {
+      cart_type: {{ settings.cart_type | json }},
+      prod_thumb_detail_show: {{ settings.prod_thumb_detail_show | json }},
+      show_size_chart: {{ settings.show_size_chart | json }}
+    };
+    document.documentElement.className = document.documentElement.className.replace('no-js', '');
+  </script>
+
+  {{ content_for_header }}
+  <script data-cfasync="false" charset="utf-8">;!function(a){a.aurycReadyCb=a.aurycReadyCb||[],a.auryc=a.auryc||[];var e=document,r=e.createElement("script"),t=e.head||e.getElementsByTagName("head")[0],c={src:"//cdn.auryc.com/916-graphmktcom/container.js","data-cfasync":"false",async:"true",defer:"true","data-vendor":"auryc","data-role":"container",charset:"utf-8"};for(var d in c)r.setAttribute(d,c[d]);t.appendChild(r);for(var n=["track","identify","addFBCustomData","addUserProperties","addSessionProperties","addInternalSessionProperties","getReplayUrl","setFeedbackEnabled","clearUserCookie","addFBSubmitHandler","addFBCancelHandler","pause","resume"],u=function(e){return function(){var r=Array.prototype.slice.call(arguments,0);a.aurycReadyCb.push(function(){a.auryc[e].apply(a.auryc,r)})}},s=0;s<n.length;s++)a.auryc[n[s]]=u(n[s])}(window);</script>
+
+</head>
+
+<body class="template-{{ template | split: '.' | first }}">
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WN6NJL3"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <a class="skip-link visually-hidden" href="#content">{{ 'general.accessibility_labels.skip_to_content' | t }}</a>
+
+  {% section 'announcement-bar' %}
+  {% section 'header' %}
+  {% section 'store-messages' %}
+
+  <main id="content" role="main">
+    <div class="container cf">
+      {% if settings.show_breadcrumb_nav %}
+   
+        <style>
+  .breadcrumbs {
+    margin: 10px 82px; 
+  }
+          ul.breadcrumbs__item {
+            margin-left:1px;}
+          @media screen and (max-width: 1023px) {
+            .breadcrumbs {
+              margin: 10px 20px;}}
+            
+
+  .breadcrumbs__list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .breadcrumbs__item {
+    display: inline-block;
+  }
+.ul {
+  text-decoration: underline;}
+          
+  .breadcrumbs__item:not(:last-child):after {
+    border-style: solid;
+    border-width: .10em .10em 0 0;
+    content: '';
+    display: inline-block;
+    height: .20em;
+    margin: 0 .40em;
+    position: relative;
+    transform: rotate(45deg);
+    vertical-align: middle;
+    width: .20em;
+  }
+
+  .breadcrumbs__link {
+    text-decoration: underline;
+  }
+
+  .breadcrumbs__link[aria-current="page"]:hover,
+  .breadcrumbs__link[aria-current="page"]:focus {
+    text-decoration: underline;
+  }
+</style>
+{%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
+{%- assign t = template | split: '.' | first -%}
+
+<nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+  <ol class="breadcrumbs__list">
+    <li class="breadcrumbs__item">
+      <a class="breadcrumbs__link" href="/">Home</a>
+    </li>
+    {%- case t -%}
+      {%- when 'page' -%}
+        <li class="breadcrumbs__item">
+          <a class="breadcrumbs__link" href="{{ page.url }}" aria-current="page">{{ page.title }}</a>
+        </li>
+      {%- when 'product' -%}
+        {%- if collection.url -%}
+          <ul class="breadcrumbs__item">
+            
+            <a class="breadcrumbs__link" href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
+           
+          </ul>
+        {%- endif -%}
+       
+      {%- when 'collection' and collection.handle -%}
+        
+          <li class="breadcrumbs__item">
+            {{ collection.title }}
+          </li>
+  
+      {%- when 'blog' -%}
+        {%- if current_tags -%}
+          <li class="breadcrumbs__item">
+            {{ blog.title | link_to: blog.url }}
+          </li>
+          <li class="breadcrumbs__item">
+            {%- capture tag_url -%}{{blog.url}}/tagged/{{ current_tags | join: "+" }}{%- endcapture -%}
+            <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + " }}</a>
+          </li>
+        {%- else -%}
+          <li class="breadcrumbs__item">
+            <a class="breadcrumbs__link" href="{{ blog.url }}" aria-current="page">{{ blog.title }}</a>
+          </li>
+        {%- endif -%}
+      {%- when 'article' -%}
+        <li class="breadcrumbs__item">
+          {{ blog.title | link_to: blog.url }}
+        </li>
+        <li class="breadcrumbs__item">
+          <a class="breadcrumbs__link" href="{{ article.url }}" aria-current="page">{{ article.title }}</a>
+        </li>
+      {%- else -%}
+        <li class="breadcrumbs__item">
+          <a class="breadcrumbs__link" href="{{ request.path }}" aria-current="page">{{ page_title }}</a>
+        </li>
+    {%- endcase -%}
+  </ol>
+</nav>
+{%- endunless -%}
+        {% endif %}
+      {{ content_for_layout }}
+
+    </div><!-- /.container -->
+  </main><!-- /#content -->
+
+  <div id="pagefooter">
+    {% section 'cross-page-promos' %}
+
+    {% section 'footer' %}
+  </div><!-- /#pagefooter -->
+
+  {% section 'popup' %}
+
+  {{ 'vendor.js'  | asset_url | script_tag }}
+  {{ 'theme.js'  | asset_url | script_tag }}
+  <script src="https://cdn.attn.tv/graphmkt/dtag.js"></script>
+ {% include 'smile-initializer' %}
+
+</body>
+</html>
+<!-- Begin Shopify-Afterpay JavaScript Snippet (v1.0.9) -->
+<script type="text/javascript">
+  // Editable fields:
+  var afterpay_min = 1.00       // As per your Afterpay contract.
+  var afterpay_max = 1000.00;         // As per your Afterpay contract.
+  var afterpay_logo_theme = 'colour'; // Can be 'colour', 'black' or 'white'.
+  // Overrides:
+  var afterpay_product_selector = '.price-container';
+  // var afterpay_cart_integration_enabled = true;
+  var afterpay_cart_static_selector = '.subtotal';
+  // var afterpay_variable_price_fallback_selector = '#ProductPrice';
+  // var afterpay_variable_price_fallback = true; // Requires afterpay_product_selector
+  var afterpay_show_currency_code = false;
+  var afterpay_modal_responsive = true;
+  // var afterpay_hide_range_decimals = true;
+  // var afterpay_hide_lower_limit = false;
+  // var afterpay_hide_upper_limit = true;
+  var afterpay_modal_open_icon = true;
+  // Non-editable fields:
+  var afterpay_shop_currency = {{ shop.currency | json }};
+  var afterpay_shop_money_format = {{ shop.money_format | json }};
+  var afterpay_shop_permanent_domain = {{ shop.permanent_domain | json }};
+  var afterpay_theme_name = {{ theme.name | json }};
+  var afterpay_product = {{ product | json }};
+  var afterpay_current_variant = {{ product.selected_or_first_available_variant | json }};
+  var afterpay_cart_total_price = {{ cart.total_price | json }};
+  var afterpay_js_snippet_version = '1.0.9';
+</script>
+<script type="text/javascript" src="https://static.afterpay.com/shopify-afterpay-javascript.js"></script>
+<!-- End Shopify-Afterpay JavaScript Snippet (v1.0.9) -->
+<style>
+  .c-afterpay-info-modal-annotation__p{ margin-top: 3px; }
+  .afterpay-link-inner{text-decoration: none;color:initial;}
+  .afterpay-link{font-size: 12px; }
+  .afterpay-paragraph{ font-size: 14px;}
+</style>
